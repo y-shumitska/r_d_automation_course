@@ -20,6 +20,3 @@ export class AutomationQA extends Employee {
     }
 
 }
-
-const newAQA = new AutomationQA(8, 5);
-console.log(newAQA.calculateEmployeeCapacity());

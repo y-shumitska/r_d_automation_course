@@ -18,7 +18,7 @@ export async function getJson(): Promise<Profiles> {
 }
 
 
-class ReadingClubProfiles {
+export class ReadingClubProfiles {
     private _obj: Profiles;
     public constructor(obj: Profiles) {
         this. _obj = obj;
@@ -29,7 +29,3 @@ class ReadingClubProfiles {
     }
 
 }
-(async () => {
-    const obj2: ReadingClubProfiles = new ReadingClubProfiles(await getJson());
-    obj2.greeting();
-})();
