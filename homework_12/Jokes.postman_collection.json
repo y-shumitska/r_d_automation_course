@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "d112462b-13b1-4c94-a59a-760d6a271d85",
+		"name": "Jokes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12362514"
+	},
+	"item": [
+		{
+			"name": "Get a random joke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"const schema = {",
+							"    \"type\": \"object\",",
+							"    \"properties\": {",
+							"        \"type\": {\"type\": \"string\"},",
+							"        \"setup\": {\"type\": \"string\"},",
+							"        \"punchline\": {\"type\": \"string\"},",
+							"        \"id\": {\"type\": \"number\"}",
+							"    }",
+							"};    ",
+							"",
+							"",
+							"pm.test('Response schema is valid', function() {",
+							"    pm.response.to.have.jsonSchema(schema);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"pm.collectionVariables.set(\"joke_id\", responseJson.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/jokes/random",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"jokes",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get joke by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Id in response matches the joke_id collection variable\", function () {",
+							"  pm.expect(pm.response.json().id).to.eql(pm.collectionVariables.get(\"joke_id\"));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/jokes/{{joke_id}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"jokes",
+						"{{joke_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get joke types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"The array includes all listed\", () => {",
+							"    pm.expect(jsonData).to.have.members([\"general\", \"knock-knock\", \"programming\",\"dad\"]);",
+							"});",
+							"",
+							"const randomIndex = Math.floor(Math.random() * jsonData.length);",
+							"pm.collectionVariables.set(\"random_type\", jsonData[randomIndex]);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/types",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get jokes by type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Type in response matches the random_type collection variable\", function () {",
+							"  pm.expect(pm.response.json().type === \"random_type\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/jokes/{{random_type}}/random",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"jokes",
+						"{{random_type}}",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 10 random jokes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response type is an array\", () => {",
+							"  pm.expect(jsonData).to.be.an(\"array\");",
+							"});",
+							"",
+							"pm.test(\"Array contains 10 objects\", function () {",
+							"    pm.expect(jsonData.length).to.equal(10);",
+							"});",
+							"",
+							"const randomNumber = jsonData.length;",
+							"pm.collectionVariables.set(\"random_number\", randomNumber);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/jokes/ten",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"jokes",
+						"ten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get any number of random jokes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status codes are not 404, 500, 503\", () => {",
+							"  pm.expect(pm.response.code).to.not.be.oneOf([404,500,503]);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200 ms\", () => {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Number of objects in the array matches the random_number variable\", function () {",
+							"  const jsonData = pm.response.json();",
+							"  pm.expect(jsonData).to.be.an(\"array\");",
+							"  pm.expect(jsonData.length).to.equal(pm.collectionVariables.get(\"random_number\"));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/jokes/random/{{random_number}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"jokes",
+						"random",
+						"{{random_number}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:3005",
+			"type": "string"
+		},
+		{
+			"key": "joke_id",
+			"value": ""
+		},
+		{
+			"key": "random_type",
+			"value": ""
+		},
+		{
+			"key": "random_number",
+			"value": ""
+		}
+	]
+}
