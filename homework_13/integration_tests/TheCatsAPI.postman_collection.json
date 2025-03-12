@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "47427484-408d-4cf1-a5e6-dd5f12a098bb",
+		"name": "TheCatsAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12362514"
+	},
+	"item": [
+		{
+			"name": "/images/upload",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.collectionVariables.set(\"uploaded_image_id\", responseJson.id);\r",
+							"\r",
+							"pm.collectionVariables.set(\"uploaded_image_sub_id\", responseJson.sub_id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{theCatsApiKey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/y.shumitska/Downloads/NZwhXfDRqsVu5xIR2fRSPGynbIGHwAnX0zDb7py6.jpg"
+						},
+						{
+							"key": "sub_id",
+							"value": "fin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{theCatsApiBaseUrl}}/images/upload",
+					"host": [
+						"{{theCatsApiBaseUrl}}"
+					],
+					"path": [
+						"images",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/images/:image_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Id in response matches the uploaded_image_id collection variable\", function () {\r",
+							"  pm.expect(pm.response.json().id).to.eql(pm.collectionVariables.get(\"uploaded_image_id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Sub_id in response matches the uploaded_image_sub_id collection variable\", function () {\r",
+							"  pm.expect(pm.response.json().sub_id).to.eql(pm.collectionVariables.get(\"uploaded_image_sub_id\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{theCatsApiKey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{theCatsApiBaseUrl}}/images/{{uploaded_image_id}}",
+					"host": [
+						"{{theCatsApiBaseUrl}}"
+					],
+					"path": [
+						"images",
+						"{{uploaded_image_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/votes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"pm.collectionVariables.set(\"vote_id\", responseJson.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{theCatsApiKey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"image_id\":\"{{uploaded_image_id}}\",\n    \"value\": 7\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{theCatsApiBaseUrl}}/votes",
+					"host": [
+						"{{theCatsApiBaseUrl}}"
+					],
+					"path": [
+						"votes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/votes/:vote_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Id in response matches the vote_id collection variable\", function () {",
+							"  pm.expect(pm.response.json().id).to.eql(pm.collectionVariables.get(\"vote_id\"));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{theCatsApiKey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{theCatsApiBaseUrl}}/votes/{{vote_id}}",
+					"host": [
+						"{{theCatsApiBaseUrl}}"
+					],
+					"path": [
+						"votes",
+						"{{vote_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/favourites",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"pm.collectionVariables.set(\"favourite_id\", responseJson.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{theCatsApiKey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"image_id\":\"{{uploaded_image_id}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{theCatsApiBaseUrl}}/favourites",
+					"host": [
+						"{{theCatsApiBaseUrl}}"
+					],
+					"path": [
+						"favourites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "favourites/:favourite_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Id in response matches the favourite_id collection variable\", function () {",
+							"  pm.expect(pm.response.json().id).to.eql(pm.collectionVariables.get(\"favourite_id\"));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{theCatsApiKey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{theCatsApiBaseUrl}}/favourites/{{favourite_id}}",
+					"host": [
+						"{{theCatsApiBaseUrl}}"
+					],
+					"path": [
+						"favourites",
+						"{{favourite_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "theCatsApiBaseUrl",
+			"value": "https://api.thecatapi.com/v1",
+			"type": "string"
+		},
+		{
+			"key": "theCatsApiKey",
+			"value": "<put oy api key here...>",
+			"type": "string"
+		},
+		{
+			"key": "uploaded_image_id",
+			"value": ""
+		},
+		{
+			"key": "uploaded_image_sub_id",
+			"value": ""
+		},
+		{
+			"key": "vote_id",
+			"value": ""
+		},
+		{
+			"key": "favourite_id",
+			"value": ""
+		}
+	]
+}

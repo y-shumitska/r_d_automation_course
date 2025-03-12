@@ -1,0 +1,67 @@
+{
+  "consumer": {
+    "name": "user-consumer-v3"
+  },
+  "interactions": [
+    {
+      "description": "A request to get a user",
+      "providerStates": [
+        {
+          "name": "User exists"
+        }
+      ],
+      "request": {
+        "headers": {
+          "accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/user/superJohn"
+      },
+      "response": {
+        "body": {
+          "email": "john.doe@gmail.com",
+          "firstName": "John",
+          "id": 1,
+          "lastName": "Doe",
+          "password": "superpassword",
+          "phone": "0983242819",
+          "userStatus": 2,
+          "username": "superJohn"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {},
+          "status": {}
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "14.0.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.22",
+      "models": "1.2.3"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "user-provider-v3"
+  }
+}
