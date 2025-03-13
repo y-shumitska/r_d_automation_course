@@ -12,17 +12,16 @@ describe('Pact V3 Store user service contract tests', () => {
         provider: 'user-provider-v3'
     });
 
-    const userResponseExample: UserDto =
-        {
-            id: 1,
-            username: 'superJohn',
-            firstName: 'John',
-            lastName: 'Doe',
-            email: 'john.doe@gmail.com',
-            password: 'superpassword',
-            phone: '0983242819',
-            userStatus: 2
-        } as unknown as UserDto;
+    const userResponseExample: UserDto = {
+        id: 1,
+        username: 'superJohn',
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john.doe@gmail.com',
+        password: 'superpassword',
+        phone: '0983242819',
+        userStatus: 2
+    } as unknown as UserDto;
 
     const expectedBody = MatchersV3.like(userResponseExample);
 
@@ -47,22 +46,11 @@ describe('Pact V3 Store user service contract tests', () => {
                 });
 
             return provider.executeTest(async (mockUserService) => {
-                userService = new UserService(
-                    mockUserService.url
-                );
+                userService = new UserService(mockUserService.url);
 
                 const user: UserDto = await userService.getMyUser('superJohn');
 
-                expect(user).to.contain.keys(
-                    'id',
-                    'username',
-                    'firstName',
-                    'lastName',
-                    'email',
-                    'password',
-                    'phone',
-                    'userStatus'
-                );
+                expect(user).to.contain.keys('id', 'username', 'firstName', 'lastName', 'email', 'password', 'phone', 'userStatus');
                 expect(user.id).to.be.a('number');
                 expect(user.username).to.be.a('string');
                 expect(user.firstName).to.be.a('string');

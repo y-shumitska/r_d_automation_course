@@ -16,7 +16,9 @@
 							"const responseJson = pm.response.json();\r",
 							"pm.collectionVariables.set(\"uploaded_image_id\", responseJson.id);\r",
 							"\r",
-							"pm.collectionVariables.set(\"uploaded_image_sub_id\", responseJson.sub_id);"
+							"pm.collectionVariables.set(\"uploaded_image_sub_id\", responseJson.sub_id);\r",
+							"\r",
+							"pm.collectionVariables.set(\"uploaded_image_url\", responseJson.url);"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -78,6 +80,10 @@
 							"\r",
 							"pm.test(\"Sub_id in response matches the uploaded_image_sub_id collection variable\", function () {\r",
 							"  pm.expect(pm.response.json().sub_id).to.eql(pm.collectionVariables.get(\"uploaded_image_sub_id\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Url in response matches the uploaded_image_url collection variable\", function () {\r",
+							"  pm.expect(pm.response.json().url).to.eql(pm.collectionVariables.get(\"uploaded_image_url\"));\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -123,7 +129,8 @@
 					"script": {
 						"exec": [
 							"const responseJson = pm.response.json();",
-							"pm.collectionVariables.set(\"vote_id\", responseJson.id);"
+							"pm.collectionVariables.set(\"vote_id\", responseJson.id);",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -177,6 +184,10 @@
 						"exec": [
 							"pm.test(\"Id in response matches the vote_id collection variable\", function () {",
 							"  pm.expect(pm.response.json().id).to.eql(pm.collectionVariables.get(\"vote_id\"));",
+							"});",
+							"",
+							"pm.test(\"Url in response matches the uploaded_image_url collection variable\", function () {",
+							"  pm.expect(pm.response.json().image.url).to.eql(pm.collectionVariables.get(\"uploaded_image_url\"));",
 							"});"
 						],
 						"type": "text/javascript",
@@ -270,6 +281,10 @@
 						"exec": [
 							"pm.test(\"Id in response matches the favourite_id collection variable\", function () {",
 							"  pm.expect(pm.response.json().id).to.eql(pm.collectionVariables.get(\"favourite_id\"));",
+							"});",
+							"",
+							"pm.test(\"Url in response matches the uploaded_image_url collection variable\", function () {",
+							"  pm.expect(pm.response.json().image.url).to.eql(pm.collectionVariables.get(\"uploaded_image_url\"));",
 							"});"
 						],
 						"type": "text/javascript",
@@ -352,6 +367,10 @@
 		},
 		{
 			"key": "favourite_id",
+			"value": ""
+		},
+		{
+			"key": "uploaded_image_url",
 			"value": ""
 		}
 	]
