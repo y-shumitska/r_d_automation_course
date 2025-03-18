@@ -1,0 +1,16 @@
+Сайт: https://rozetka.com.ua/ua/
+
+Кнопка "Знайти":
+//div[@class="header-search"]/rz-search-suggest/form/div/button
+
+Кнопка "Каталог":
+//button[@data-testid="fat_menu_btn"]
+
+Слайдер:
+//rz-slider
+
+Права кнопка слайдера:
+//rz-slider/button[2]
+
+Поле пошуку:
+//rz-search-suggest/form/div[1]/div[@class="search-form__inner"]
