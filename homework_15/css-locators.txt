@@ -4,7 +4,7 @@
 button.button.button_color_green
 
 Кнопка "Каталог":
-[href="/assets/sprite/sprite.33f6cc7b.svg#icon-catalog"]
+button[data-testid="fat_menu_btn"]
 
 Слайдер:
 rz-slider
