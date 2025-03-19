@@ -1,0 +1,16 @@
+Сайт: https://rozetka.com.ua/ua/
+
+Кнопка "Знайти":
+button.button.button_color_green
+
+Кнопка "Каталог":
+button[data-testid="fat_menu_btn"]
+
+Слайдер:
+rz-slider
+
+Права кнопка слайдера:
+.right-btn
+
+Поле пошуку:
+[rzsearchinput]

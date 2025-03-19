@@ -1,0 +1,28 @@
+Сайт: https://rozetka.com.ua/ua/
+
+Тест кейс 1. Обрання іншої мови
+Прекондішен: //button[@data-testid="lang_btn"] має значення RU
+1. Натиснути на //button[@data-testid="lang_btn"]
+2. Очікувати на елемент (//div[@class="lang__menu"]//button)[1]
+3. Натиснути на //div[@class="lang__menu"]/ul/li[1]/button
+Очікуваний результат:  //button[@data-testid="lang_btn"] має значення UA
+
+
+Тест кейс 2. Пошук товару
+1. Натиснути на //div[@class="search-form__inner"]
+2. Ввести iphone 
+3. Натиснути на //button[contains(@class, 'search-form__submit')]
+Очікуваний результат: Відображається елемент //h1[text()='Apple iPhone']
+
+Тест кейс 3. Додавання товару до кошику
+1. Знайти елемент //rz-section-tiles-block-best//rz-product-tile[1]
+2. Натиснути на //rz-section-tiles-block-best//rz-product-tile[1]//rz-buy-button
+3. Натиснути на //button[@class="header-cart__button"]
+4. Почекати на елемент //rz-shopping-cart
+Очікуваний результат: В елементі //rz-shopping-cart елемент //div[@class="cart-product__body"] відображає доданий товар.
+
+Тест-кейс 4. Віддкриття довідкового центру
+1. Натиснути на //button[@data-testid="menu_button"]
+2. Почекати на елемент //div[@class="content"]
+3. Натиснути на //a[@href="https://help.rozetka.com.ua/"]
+Очікуваний результат: Відкривається сторінка https://help.rozetka.com.ua/
