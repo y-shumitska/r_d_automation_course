@@ -1,0 +1,45 @@
+import { Page } from '@playwright/test';
+import { ContentsTabsElement } from 'src/elements/contents-tabs.elements';
+import { TableOfContentsElements } from 'src/elements/contents-links.elements';
+
+export class ContentsPage {
+    public constructor(private page: Page) {
+        this.tabsElement = new ContentsTabsElement(page);
+        this.contentsElements = new TableOfContentsElements(page);
+    }
+
+    public tabsElement: ContentsTabsElement;
+    public contentsElements: TableOfContentsElements;
+
+    public async goto(): Promise<void> {
+        await this.page.goto('https://javascript.info/', { waitUntil: 'domcontentloaded' });
+    }
+
+    public async getTabNames(): Promise<string[]> {
+        return this.tabsElement.getTabNames();
+    }
+
+    public async selectTab(tabName: string): Promise<void> {
+        await this.tabsElement.selectTab(tabName);
+    }
+
+    public async getActiveTab(): Promise<string> {
+        return this.tabsElement.getActiveTab();
+    }
+
+    public async getPartNames(): Promise<string[]> {
+        return this.contentsElements.getPartNames();
+    }
+
+    public async getChapterNames(): Promise<string[]> {
+        return this.contentsElements.getChapterNames();
+    }
+
+    public async getTopicNames(): Promise<string[]> {
+        return this.contentsElements.getTopicNames();
+    }
+
+    public async selectTopic(topicName: string): Promise<void> {
+        await this.contentsElements.selectTopic(topicName);
+    }
+}
