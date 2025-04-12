@@ -5,7 +5,7 @@
 To run the tests, execute:
 
 ```sh
-cd homework_19
+cd homework_20
 ```
 
 and then execute:
