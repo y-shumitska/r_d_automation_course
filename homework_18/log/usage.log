@@ -1,0 +1,24 @@
+2025-04-15 22:33:24 - [32minfo[39m: Creating configuration file...
+2025-04-15 22:33:24 - [32minfo[39m: Adding new script(s) in package.json...
+2025-04-15 22:33:24 - [32minfo[39m: Setup completed
+2025-04-15 22:40:25 - [32minfo[39m: Running SDK with args /Users/y.shumitska/.nvm/versions/node/v22.13.1/bin/node /Users/y.shumitska/Documents/r_d_automation_course/homework_18/node_modules/.bin/browserstack-node-sdk playwright test
+2025-04-15 22:40:25 - [32minfo[39m: Reading configs from /Users/y.shumitska/Documents/r_d_automation_course/homework_18/browserstack.yml
+2025-04-15 22:40:25 - [32minfo[39m: SDK run started with id: 3c162249-ace4-469a-aebb-ea622b805797
+2025-04-15 22:40:25 - [32minfo[39m: Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+2025-04-15 22:40:32 - [32minfo[39m: Local binary started successfully
+2025-04-15 22:40:34 - [32minfo[39m: Testhub started with id: 2bbuuauv2yckevokoxe2yxrx8bq37wlfbwcup3ix
+2025-04-15 22:58:48 - [32minfo[39m: Shutdown triggered by SIGINT
+2025-04-15 22:58:48 - [32minfo[39m: Visit https://observability.browserstack.com/builds/2bbuuauv2yckevokoxe2yxrx8bq37wlfbwcup3ix to view build report, insights, and many more debugging information all at one place!
+
+2025-04-15 22:58:48 - [32minfo[39m: View build on BrowserStack dashboard: https://automate.browserstack.com/dashboard/v2/builds/0491d1d54628b36a617405280240fe89adbdad67
+2025-04-15 22:58:49 - [32minfo[39m: SDK run ended for id: 3c162249-ace4-469a-aebb-ea622b805797, testhub id: 2bbuuauv2yckevokoxe2yxrx8bq37wlfbwcup3ix
+2025-04-15 22:58:50 - [32minfo[39m: Deleting /Users/y.shumitska/Documents/r_d_automation_course/homework_18/playwright-browserstack-sdk.config.ts
+2025-04-15 22:58:53 - [32minfo[39m: Local binary stopped
+2025-04-15 22:58:59 - [32minfo[39m: Running SDK with args /Users/y.shumitska/.nvm/versions/node/v22.13.1/bin/node /Users/y.shumitska/Documents/r_d_automation_course/homework_18/node_modules/.bin/browserstack-node-sdk playwright test
+2025-04-15 22:58:59 - [32minfo[39m: Reading configs from /Users/y.shumitska/Documents/r_d_automation_course/homework_18/browserstack.yml
+2025-04-15 22:58:59 - [32minfo[39m: SDK run started with id: 379d0baa-425d-461f-babd-70379a4ebc30
+2025-04-15 22:59:01 - [32minfo[39m: Testhub started with id: fswgkxoef1rrmgmqno7ikgpq8nfjx7rtrvs6pcsc
+2025-04-15 22:59:26 - [32minfo[39m: Visit https://observability.browserstack.com/builds/fswgkxoef1rrmgmqno7ikgpq8nfjx7rtrvs6pcsc to view build report, insights, and many more debugging information all at one place!
+
+2025-04-15 22:59:27 - [32minfo[39m: SDK run ended for id: 379d0baa-425d-461f-babd-70379a4ebc30, testhub id: fswgkxoef1rrmgmqno7ikgpq8nfjx7rtrvs6pcsc
+2025-04-15 22:59:28 - [32minfo[39m: Deleting /Users/y.shumitska/Documents/r_d_automation_course/homework_18/playwright-browserstack-sdk.config.ts
