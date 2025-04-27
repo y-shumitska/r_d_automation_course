@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+    react-app:
+        build: .
+        ports:
+            - '3000:3000'
+        container_name: react-app
+        networks:
+            - testnet
+
+    playwright:
+        image: mcr.microsoft.com/playwright:v1.52.0-jammy
+        container_name: playwright-tests
+        working_dir: /tests
+        volumes:
+            - ./playwright:/tests
+        depends_on:
+            - react-app
+        command: >
+            sh -c "npx playwright install && npx playwright test --workers=1; npx serve ./playwright-report -l 9323"
+        ports:
+            - '9323:9323'
+        networks:
+            - testnet
+
+networks:
+    testnet:
