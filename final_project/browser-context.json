@@ -1,0 +1,45 @@
+{
+  "cookies": [
+    {
+      "name": "X-Username",
+      "value": "austere.studio%40gmail.com",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1745457490.181882,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "Session-User",
+      "value": "austere.studio%40gmail.com",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1745457490.181949,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "X-Access-Token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYXVzdGVyZS5zdHVkaW9AZ21haWwuY29tIiwianRpIjoiZTlkYThmNDYtZWJiMi00OGNkLTkzM2UtOGVjZjc1NGQzMmFhIiwiZXhwIjoxNzQ1NDQ2Njg5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYxOTU1IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.YKwUkicGJj0rNHLuieeS4XBMBVZkAU6wh_F4SBnIAJk",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1745439490.18181,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "X-Refresh-Token",
+      "value": "84051710-27a9-4fc2-aa57-40850cdbbd50",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1745457490.181918,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": []
+}
